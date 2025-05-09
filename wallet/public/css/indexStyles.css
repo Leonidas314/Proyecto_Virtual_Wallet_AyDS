@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    background-image: url('/images/indexBackground.jpg'); /* Asegurate de poner el nombre correcto del archivo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5vw;
+    color: #f0f0f0;
+  }
+  
+  .container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2rem 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    max-width: 400px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+  }
+  
+  p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #dddddd;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  
+  .btn {
+    display: inline-block;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    background-color: #4a90e2; /* azul sobrio */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #357ab7;
+  }
