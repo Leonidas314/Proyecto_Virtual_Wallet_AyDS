@@ -4,3 +4,6 @@ gem 'json'
 gem 'puma'
 gem 'rackup'
 gem 'sinatra'
+gem "sinatra-activerecord"
+gem "sqlite3"
+gem "rake"
