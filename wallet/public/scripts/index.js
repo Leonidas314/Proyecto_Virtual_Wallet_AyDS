@@ -1,12 +1,10 @@
 loginBtn = document.getElementById('loginBtn');
+registerBtn = document.getElementById('registerBtn');
 
 loginBtn.addEventListener("click", () => {
-  fetch('/login')
-  .then(response => response.text())  // Esperamos HTML
-  .then(html => {
-    document.body.innerHTML = html;
-  })
-  .catch(error => {
-    console.error('Error al cargar la página de login:', error);
-  });
+  window.location.href = '/login';
+});
+
+registerBtn.addEventListener("click", () => {
+  window.location.href = '/signup';
 });
