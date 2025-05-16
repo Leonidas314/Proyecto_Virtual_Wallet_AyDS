@@ -1,9 +1,11 @@
 require 'bundler/setup'
+Bundler.require(:default)
+
+require 'sinatra'
 require 'sinatra/activerecord'
 
-Bundler.require
+Dir[File.join(__dir__, '../app/models/*.rb')].each { |f| require f }
 
-# Cargar todos los archivos de la app (modelos, controladores, servicios)
-Dir[File.expand_path('../app/**/*.rb', __dir__)].each { |file| require file }
-
-set :database_file, 'database.yml'
+ActiveRecord::Base.establish_connection(
+  YAML.load_file('config/database.yml')[ENV['RACK_ENV'] || 'development']
+)
