@@ -1,0 +1,38 @@
+# Archivos de Ruby y Bundler
+*.gem
+*.rbc
+.bundle/
+vendor/
+
+# Archivos temporales y de sistema
+*.swp
+*.swo
+*.bak
+*~
+.DS_Store
+Thumbs.db
+
+# Base de datos y logs
+db/*.sqlite3
+db/*.sqlite3-journal
+log/*
+tmp/*
+
+# Archivos de configuración locales
+.env
+.env.*
+
+# Archivos de compilación
+coverage/
+.byebug_history
+
+# Archivos de Rack
+.rackup
+
+# Carpeta de pruebas (si generás resultados)
+spec/reports/
+test/tmp/
+test/version_tmp/
+
+# Carpeta de dependencias si usás Docker o similares
+node_modules/

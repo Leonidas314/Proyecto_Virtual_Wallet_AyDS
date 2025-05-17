@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_16_145754) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_17_133005) do
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "tipo", default: 0, null: false
@@ -18,6 +18,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_145754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "transfer_mediators", force: :cascade do |t|
+    t.integer "from_account_id", null: false
+    t.integer "to_account_id", null: false
+    t.decimal "amount", precision: 10, scale: 2, default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_account_id"], name: "index_transfer_mediators_on_from_account_id"
+    t.index ["to_account_id"], name: "index_transfer_mediators_on_to_account_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,4 +42,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_16_145754) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "transfer_mediators", "accounts", column: "from_account_id"
+  add_foreign_key "transfer_mediators", "accounts", column: "to_account_id"
 end
