@@ -1,4 +1,7 @@
 require 'sinatra/base'
+require 'json'
+
+enable :sessions
 
 class AuthController < Sinatra::Base
     set :views, File.expand_path('../../views', __FILE__)
@@ -13,19 +16,34 @@ class AuthController < Sinatra::Base
         erb :'erb/signup'
     end
 
+
     post '/signup' do
+        data = JSON.parse(request.body.read)
+
         user = User.new(
-        username: params[:username],
-        email: params[:email],
-        password: params[:password],
-        password_confirmation: params[:password_confirmation]
+            name: data["name"],
+            email: data["email"],
+            phone: data["phone"],
+            cvu: data["cvu"],
+            balance: data["balance"] || 0,
+            password: data["password"],
+            password_confirmation: data["password_confirmation"]
         )
 
+        if User.find_by(email: email)
+            status 409
+            return { error: "El email ya está registrado" }.to_json
+        end
+
         if user.save
-            session[:user_id] = user.id
-            redirect '/dashboard' # o a donde quieras
+            status 201
+            content_type :json
+            { message: "Usuario creado exitosamente", user: user }.to_json
         else
-            erb :'erb/signup', locals: { error: "Error al registrar: #{user.errors.full_messages.join(', ')}" }
+            status 422
+            content_type :json
+            { errors: user.errors.full_messages }.to_json
         end
     end
+
 end

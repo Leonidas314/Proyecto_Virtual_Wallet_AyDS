@@ -13,7 +13,7 @@
       <p class="error"><%= @error %></p>
     <% end %>
 
-    <form action="/signup" method="post">
+    <form id="signup-form">
       <div>
         <label for="name">Nombre:</label>
         <input type="text" name="name" id="name" placeholder="Tu nombre completo" required>
@@ -22,6 +22,11 @@
       <div>
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" placeholder="ejemplo@correo.com" required>
+      </div>
+
+      <div>
+        <label for="phone">Teléfono:</label>
+        <input type="text" name="phone" id="phone" placeholder="+54 35811111" required>
       </div>
 
       <div>
@@ -37,5 +42,7 @@
       <button type="submit">Registrarse</button>
     </form>
   </div>
+
+  <script src="/scripts/signup.js" defer></script>
 </body>
 </html>
