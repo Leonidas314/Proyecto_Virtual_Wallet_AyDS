@@ -30,7 +30,7 @@ class AuthController < Sinatra::Base
             password_confirmation: data["password_confirmation"]
         )
 
-        if User.find_by(email: email)
+        if User.find_by(email: data["email"])
             status 409
             return { error: "El email ya está registrado" }.to_json
         end
@@ -44,6 +44,21 @@ class AuthController < Sinatra::Base
             content_type :json
             { errors: user.errors.full_messages }.to_json
         end
+    end
+    post '/login' do
+      data = JSON.parse(request.body.read)
+      user = User.find_by(email: data["email"])
+
+      if user && user.authenticate(data["password"])
+        session[:user_id] = user.id
+        status 200
+        content_type :json
+        { message: "Login exitoso", user: { id: user.id, name: user.name, email: user.email } }.to_json
+      else
+        status 401
+        content_type :json
+        { error: "Email o contraseña incorrectos" }.to_json
+      end
     end
 
 end

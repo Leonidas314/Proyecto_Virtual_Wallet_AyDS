@@ -1,14 +1,21 @@
-# controllers/dashboard_controller.rb
-
 require 'sinatra/base'
 
-class DashboardController < Sinatra::Base
-  register Sinatra::ActiveRecordExtension
-
+class DashBoardController < Sinatra::Base
+  enable :sessions
   set :views, File.expand_path('../../views', __FILE__)
-  set :public_folder, File.expand_path('../../public', __dir__)
 
   get '/dashboard' do
-    erb :'erb/dashboard'
+   if session[:user_id]
+    @user = User.find_by(id: session[:user_id])
+    if @user
+      erb :'erb/dashboard'
+    else
+      session.clear
+      redirect '/login'
+    end
+  else
+    redirect '/login'
+
+    end
   end
 end
