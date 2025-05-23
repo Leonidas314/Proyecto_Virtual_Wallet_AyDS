@@ -36,3 +36,6 @@ test/version_tmp/
 
 # Carpeta de dependencias si usás Docker o similares
 node_modules/
+# comandos_docker para levantar host
+comandos_docker.txt
+Dashboard/

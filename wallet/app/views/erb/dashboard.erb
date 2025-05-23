@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/signupStyles.css">
+</head>
+<body>
+    <!-- app/views/users/dashboard.html.erb -->
+
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Bienvenido, <%= @user.name %>!</h1>
+    <p>Esta es tu Bull Wallet.</p>
+  </header>
+
+  <section class="balance-section">
+    <h2>Saldo actual</h2>
+    <div class="balance-amount">
+     <!-- $<%= number_to_currency(@user.wallet_balance, unit: "", precision: 2) %>-->
+    </div>
+  </section>
+
+  <section class="actions-section">
+    <h2>Acciones rápidas</h2>
+    <div class="actions-buttons">
+      <button type="button">Enviar dinero</button>
+      <button type="button">Recargar saldo</button>
+      <button type="button">Historial de transacciones</button>
+    </div>
+  </section>
+
+  <section class="profile-info-section">
+    <h2>Información del perfil</h2>
+    <div class="profile-details">
+      <p><strong>Email:</strong> <%= @user.email %></p>
+      <p><strong>Fecha de registro:</strong> <%= @user.created_at.strftime("%d/%m/%Y") %></p>
+    </div>
+  </section>
+
+  <footer class="dashboard-footer">
+    <p>© 2025 Bull Wallet</p>
+  </footer>
+</div>
+
+
+</body>
+</html>
