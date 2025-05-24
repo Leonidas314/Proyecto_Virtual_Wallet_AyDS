@@ -16,6 +16,21 @@ class AuthController < Sinatra::Base
         erb :'erb/signup'
     end
 
+    post '/login' do
+      data = JSON.parse(request.body.read)
+      user = User.find_by(email: data["email"])
+
+      if user && user.authenticate(data["password"])
+        session[:user_id] = user.id
+        status 200
+        content_type :json
+        { message: "Login exitoso", user: { id: user.id, name: user.name, email: user.email } }.to_json
+      else
+        status 401
+        content_type :json
+        { error: "Email o contraseña incorrectos" }.to_json
+      end
+    end
 
     post '/signup' do
         data = JSON.parse(request.body.read)
@@ -45,20 +60,4 @@ class AuthController < Sinatra::Base
             { errors: user.errors.full_messages }.to_json
         end
     end
-    post '/login' do
-      data = JSON.parse(request.body.read)
-      user = User.find_by(email: data["email"])
-
-      if user && user.authenticate(data["password"])
-        session[:user_id] = user.id
-        status 200
-        content_type :json
-        { message: "Login exitoso", user: { id: user.id, name: user.name, email: user.email } }.to_json
-      else
-        status 401
-        content_type :json
-        { error: "Email o contraseña incorrectos" }.to_json
-      end
-    end
-
 end

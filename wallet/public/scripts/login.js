@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (response.ok) {
         console.log('Login exitoso', result);
-        window.location.href = '/dashboard'; // Redirige a donde quieras
+        window.location.href = '/dashboard';
       } else {
         alert(result.error);
       }
