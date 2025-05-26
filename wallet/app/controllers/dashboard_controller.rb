@@ -1,10 +1,6 @@
 require 'sinatra/base'
 
 class DashBoardController < Sinatra::Base
-  enable :sessions
-
-  set :session_secret, ENV['SESSION_SECRET']
-
   set :views, File.expand_path('../../views', __FILE__)
   set :public_folder, File.expand_path('../../public', __dir__)
   set :static, true

@@ -1,7 +1,6 @@
 require 'sinatra/base'
 
-
-class UsersController < Sinatra::Base
+class IndexController < Sinatra::Base
 
   register Sinatra::ActiveRecordExtension
 

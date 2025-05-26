@@ -1,11 +1,19 @@
-require './config/environment.rb' # Carga el entorno (gemas, controladores, etc.)
+require './config/environment.rb'
 
 require './app/controllers/index_controller.rb'
 require './app/controllers/auth_controller.rb'
 require './app/controllers/dashboard_controller.rb'
 
-use UsersController # Le dice a Rack qué clase manejará las rutas
+use Rack::Session::Cookie, key: 'rack.session',
+                           path: '/',
+                           secret: ENV['SESSION_SECRET'] || 'supersecret123'
+
 use AuthController
 use DashBoardController
+use IndexController
 
-run Sinatra::Application
+run Rack::URLMap.new(
+  "/" => IndexController.new,
+  "/auth" => AuthController.new,
+  "/dashboard" => DashBoardController.new
+)

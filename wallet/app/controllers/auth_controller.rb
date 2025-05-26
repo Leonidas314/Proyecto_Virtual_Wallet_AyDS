@@ -23,6 +23,7 @@ class AuthController < Sinatra::Base
       if user && user.authenticate(data["password"])
         session[:user_id] = user.id
         status 200
+
         content_type :json
         { message: "Login exitoso", user: { id: user.id, name: user.name, email: user.email } }.to_json
       else
