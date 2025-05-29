@@ -52,7 +52,7 @@ Para probar la aplicación localmente, se recomienda utilizar Docker Compose. Lo
 
 ## Participantes
 
-- [Alfonso David](https://github.com/davidalfonso)
+- [Alfonso David](https://github.com/Dvalfonso)
 - [Budin Lautaro](https://github.com/Lautarobudin)
 - [Cuesta Mateo](https://github.com/MateoCuesta)
 - [Dellafiore Leon](https://github.com/Leonidas314)
