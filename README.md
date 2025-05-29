@@ -1,4 +1,4 @@
-# Proyecto Wallet (nombre provisional)
+# BullWallet
 
 Este proyecto es una aplicación web tipo billetera digital desarrollada en Ruby con el framework Sinatra. Permite a los usuarios registrarse, iniciar sesión y gestionar su sesión para eventualmente administrar sus finanzas. Además, en futuras versiones se integrarán funcionalidades para visualizar noticias financieras.
 
