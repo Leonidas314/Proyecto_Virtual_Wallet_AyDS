@@ -38,4 +38,7 @@ test/version_tmp/
 node_modules/
 # comandos_docker para levantar host
 comandos_docker.txt
+#Carpetas para el frontend del dashboard
 Dashboard/
+#Prototipo de dashboard.
+dashboardPrototipe/
