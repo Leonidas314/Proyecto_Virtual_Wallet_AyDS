@@ -5,7 +5,7 @@
 }
 @font-face {
     font-family: 'Michroma';
-    src: url('../fonts/Michroma/Michroma-Regular.ttf');
+    src: url('/fonts/Michroma/Michroma-Regular.ttf');
 }
 body{
     font-family: 'Michroma';
@@ -14,9 +14,9 @@ body{
     align-items: center;
     justify-content: center;
     color: aliceblue;
-    background: #0d001a;
-    background-image: radial-gradient(circle,rgba(2, 0, 36, 0.5) 0%, rgba(25, 5, 117, 0.5) 35%, rgba(2, 100, 120, 0.5) 100%),
-    url('../images/ChartBackground.jpeg');
+    background: #02000f;
+    background-image: linear-gradient(90deg,rgba(2, 0, 36, 0.5) 40%, rgba(9, 9, 121, 0.5) 82%, rgba(0, 212, 255, 0.5) 100%),
+    url('/images/ChartBackground.jpeg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -32,17 +32,17 @@ body{
 }
 #dashboard-header > div{
     height: 100%;
-    border: solid rgb(95, 95, 195) 1px;
+    /*border: solid rgb(95, 95, 195) 1px;*/
 }
 #dashboard-center{
     display: grid;
     grid-template-columns: 50% 50%;
 }
 .balance-divs{
-    border: solid purple 1px;
+   /* border: solid purple 1px;*/
 }
 .center-columns-divs{
-    border: solid rgb(255, 255, 255) 1px;
+    /*border: solid rgb(255, 255, 255) 1px;*/
     height: 100%;
 }
 #balance-container-div{
@@ -67,12 +67,12 @@ body{
     align-items: center;
     width: 70%;
     height: 70%;
-    border: dotted rgb(232, 16, 214) 2px;
+   /* border: dotted rgb(232, 16, 214) 2px;*/
     border-radius: 15%;
 
 }
 .balance-bottons-divs{
-    border: solid rgb(245, 242, 242) 1px;
+    /*border: solid rgb(245, 242, 242) 1px;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,18 +93,18 @@ body{
 #botton-send{
   background-image: 
     linear-gradient(to right, rgba(26, 41, 128, 0.7) 0%, rgba(38, 208, 206, 0.7) 51%, rgba(26, 41, 128, 0.7) 100%),
-    url('../images/arrow-fat-line-up.svg');  
+    url('/images/arrow-fat-line-up.svg');  
 }
 #botton-deposit{
 
   background-image: 
     linear-gradient(to right, rgba(26, 41, 128, 0.7) 0%, rgba(38, 208, 206, 0.7) 51%, rgba(26, 41, 128, 0.7) 100%),
-    url('../images/arrow-fat-line-down.svg');
+    url('/images/arrow-fat-line-down.svg');
 }
 #botton-record{
   background-image: 
     linear-gradient(to right, rgba(26, 41, 128, 0.7) 0%, rgba(38, 208, 206, 0.7) 51%, rgba(26, 41, 128, 0.7) 100%),
-    url('../images/book-open-text.svg');
+    url('/images/book-open-text.svg');
 }
 .balance-bottons {
   background-size: 100% auto; /* Hace que el gradiente se pueda mover */
@@ -141,7 +141,7 @@ body{
 #movimientos-recientes{
     width: 95%;
     height: 95%;
-    border: dotted rgb(255, 250, 250) 1px;
+   /* border: dotted rgb(255, 250, 250) 1px;*/
 }
 #dashboard-footer{
 }
@@ -152,6 +152,6 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    border: solid red 1px;
+   /* border: solid red 1px;*/
 
 }
