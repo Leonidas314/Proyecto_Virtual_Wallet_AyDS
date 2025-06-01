@@ -27,6 +27,7 @@ body{
     grid-template-rows: 1fr 5fr 1fr;
 }
 #dashboard-header{
+    margin: 30px;
     display: grid;
     grid-template-columns: 2fr 5fr 1fr;
 }
@@ -154,4 +155,17 @@ body{
     background-position: center;
    /* border: solid red 1px;*/
 
+}
+
+.notice{
+    margin-top: 30px;
+}
+
+.button-logout{
+    background:none;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    color:white;
+    text-decoration:underline;
 }

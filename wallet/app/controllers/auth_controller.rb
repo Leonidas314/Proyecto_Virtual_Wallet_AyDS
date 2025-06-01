@@ -7,9 +7,9 @@ class AuthController < Sinatra::Base
     set :views, File.expand_path('../../views', __FILE__)
     set :public_folder, File.expand_path('../../public', __dir__)
     set :static, true
-    
+
     get '/login' do
-       erb :'erb/login' 
+        erb :'erb/login'
     end
 
     get '/signup' do
@@ -17,20 +17,20 @@ class AuthController < Sinatra::Base
     end
 
     post '/login' do
-      data = JSON.parse(request.body.read)
-      user = User.find_by(email: data["email"])
+        data = JSON.parse(request.body.read)
+        user = User.find_by(email: data["email"])
 
-      if user && user.authenticate(data["password"])
-        session[:user_id] = user.id
-        status 200
+        if user && user.authenticate(data["password"])
+            session[:user_id] = user.id
+            status 200
 
-        content_type :json
-        { message: "Login exitoso", user: { id: user.id, name: user.name, email: user.email } }.to_json
-      else
-        status 401
-        content_type :json
-        { error: "Email o contraseña incorrectos" }.to_json
-      end
+            content_type :json
+            { message: "Login exitoso", user: { id: user.id, name: user.name, email: user.email } }.to_json
+        else
+            status 401
+            content_type :json
+            { error: "Email o contraseña incorrectos" }.to_json
+        end
     end
 
     post '/signup' do
@@ -60,5 +60,10 @@ class AuthController < Sinatra::Base
             content_type :json
             { errors: user.errors.full_messages }.to_json
         end
+    end
+
+    post "/logout" do
+        session.clear
+        redirect "/"
     end
 end

@@ -8,16 +8,18 @@
 </head>
 <body>
     <div id="main-container">
-      <header class="dash-container" id="dashboard-header">
-        <div><p>Bienvenido <%= @user.name %>!</p></div>
-        <div>Bull Wallet Icon</div>
-        <div><p>Cerrar Sesión</p></div>
+      <header>
+        <form action="/logout" method="POST" class="dash-container" id="dashboard-header">
+          <div><p>Bienvenido <%= @user.name %>!</p></div>
+          <div>Bull Wallet Icon</div>
+          <div><button type="submit" class="button-logout">Cerrar Sesión</button></div>
+        </form>
       </header>
       <div class="dash-container" id="dashboard-center">
           <div class ="center-columns-divs" id="balance-container-div">
             <div class="balance-bottons-divs" id="balance-display">
                 <div id="balance">
-                  <div>Saldo Total $ ..... ARS implementar metodo</div>
+                  <div><h3>Saldo Total: $<%= @user.balance %> ARS</h3></div>
                 </div>
               </div>
               <div class="balance-bottons-divs">
