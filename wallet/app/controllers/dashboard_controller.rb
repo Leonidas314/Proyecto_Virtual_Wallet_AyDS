@@ -15,6 +15,7 @@ class DashBoardController < Sinatra::Base
       @user = User.find_by(id: session[:user_id])
       if @user
         puts "Usuario encontrado: #{@user.email}"
+        @notices = Notice.all
 
         erb :'erb/dashboard'
       else
