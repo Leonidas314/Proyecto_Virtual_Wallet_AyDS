@@ -1,37 +1,26 @@
-class TransferMediator < ActiveRecord::Base
+class Transfer < ActiveRecord::Base
+    # La relacionamos con la tabla anterior del mediator por ahora (renombrarla?)
+    self.table_name = "transfer_mediators"
+
     belongs_to :from_account, class_name: 'Account'
     belongs_to :to_account, class_name: 'Account'
-  
+
+    validates :from_account, presence: true
+    validates :to_account, presence: true
     validates :amount, numericality: { greater_than: 0 }
   
-    # Método para transferir un monto de una cuenta a otra
     def self.transferir(from_account, to_account, amount)
+      raise ArgumentError, "Cuenta origen inválida" unless from_account.is_a?(Account)
+      raise ArgumentError, "Cuenta destino inválida" unless to_account.is_a?(Account)
+      raise ArgumentError, "Las cuentas no pueden ser las mismas" if from_account == to_account
+      raise ArgumentError, "Fondos insuficientes" if from_account.balance < amount
+      
+      # transaction para seguridad
       transaction do
-        raise "Fondos insuficientes" unless debitar(from_account, amount)
-        acreditar(to_account, amount)
-  
         create!(from_account: from_account, to_account: to_account, amount: amount)
+        from_account.update!(balance: from_account.balance - amount)
+        to_account.update!(balance: to_account.balance + amount)
       end
-    rescue => e
-      puts "Error en transferencia: #{e.message}"
-      false
-    end
-  
-    # Método para debitar el monto de la cuenta origen
-    def self.debitar(account, amount)
-      if account.balance >= amount
-        account.balance -= amount
-        account.save!
-        true
-      else
-        false
-      end
-    end
-  
-    # Método para acreditar el monto en la cuenta destino
-    def self.acreditar(account, amount)
-      account.balance += amount
-      account.save!
     end
   end
   
