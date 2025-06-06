@@ -1,57 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido a tu Bull Wallet</title>
-    <link rel="stylesheet" href="/css/dashboardStyle.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bull Wallet</title>
+  <link rel="stylesheet" href="/css/dashboardStyle.css">
 </head>
 <body>
-    <div id="main-container">
-      <header>
-        <form action="/logout" method="POST" class="dash-container" id="dashboard-header">
-          <div><p>Bienvenido <%= @user.name %>!</p></div>
-          <div>Bull Wallet Icon</div>
-          <div><button type="submit" class="button-logout">Cerrar Sesión</button></div>
-        </form>
-      </header>
-      <div class="dash-container" id="dashboard-center">
-          <div class ="center-columns-divs" id="balance-container-div">
-            <div class="balance-bottons-divs" id="balance-display">
-                <div id="balance">
-                  <div><h3>Saldo Total: $<%= @user.balance %> ARS</h3></div>
-                </div>
-              </div>
-              <div class="balance-bottons-divs">
-                <div><button id="botton-send" class="balance-bottons"></button><p>Enviar</p></div>
-                <div><button id="botton-deposit" class="balance-bottons"> </button><p>Ingresar</p></div>
-                <div><button id="botton-record" class="balance-bottons"> </button> <p>Historial</p> </div>
-              </div> 
-            <div id="movimientos-reciente-div">
-              <div id="movimientos-recientes">
-                <p><strong>Email:</strong> <%= @user.email %></p>
-                <p><strong>CVU:</strong> <%= @user.cvu %></p>
-                <p><strong>Fecha de registro:</strong> <%= @user.created_at.strftime("%d/%m/%Y") %></p>
-                <p>Listar movimientos recientes en este espacio</p>
-              </div>
-            </div> 
+  <main>
+    <header>
+      <div>Bienvenido, <%= @user.name %>!</div>
+      <form action="/logout" method="POST">
+        <button type="submit">Cerrar Sesión</button>
+      </form>
+    </header>
+
+    <div class="content">
+      <section class="left">
+        <section class="glass">
+          <h2>Saldo Total</h2>
+          <p>$<%= @user.balance %> ARS</p>
+          <div class="actions">
+            <button>Enviar</button>
+            <button>Ingresar</button>
+            <button>Historial</button>
           </div>
-          <div class ="center-columns-divs">
-            <h1>Noticias</h1>
-            <% @notices.each do |notice| %>
-              <div class="notice">
-                <h3><%= notice.title %></h3>
-                <p><%= notice.body %></p>
-              </div>
-            <% end %>
-          </div>
-      </div>
-      <footer class="dash-container" id="dashboard-footer">
-        <p>© 2025 Bull Wallet</p>
-      </footer>
+        </section>
+
+        <section class="glass">
+          <h3>Datos del Usuario</h3>
+          <p><strong>Email:</strong> <%= @user.email %></p>
+          <p><strong>CVU:</strong> <%= @user.cvu %></p>
+          <p><strong>Registrado:</strong> <%= @user.created_at.strftime("%d/%m/%Y") %></p>
+        </section>
+      </section>
+
+      <section class="right glass">
+        <h2>Noticias</h2>
+        <% @notices.each do |notice| %>
+          <article>
+            <h3><%= notice.title %></h3>
+            <p><%= notice.body %></p>
+          </article>
+        <% end %>
+      </section>
     </div>
-</div>
 
-
+    <footer>
+      <p>© 2025 Bull Wallet</p>
+    </footer>
+  </main>
 </body>
 </html>
