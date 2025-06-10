@@ -4,16 +4,20 @@
   <meta charset="UTF-8">
   <title>Mi Wallet</title>
   <link rel="stylesheet" href="css/indexStyles.css">
-  <script src="/scripts/index.js" defer></script>
 </head>
 <body>
   <div class="container">
-    <h1>Bienvenido a tu Wallet</h1>
+    <h1>Bienvenido Bull Wallet</h1>
     <p>Gestioná tu dinero de forma simple y segura.</p>
 
     <div class="actions">
-      <a href="/login" id="loginBtn" class="btn">Iniciar Sesión</a>
-      <a href="/signup" id="registerBtn" class="btn">Registrarse</a>
+      <form action="/login" method="get" style="display:inline;">
+        <button type="submit" class="btn">Iniciar Sesión</button>
+      </form>
+
+      <form action="/signup" method="get" style="display:inline;">
+        <button type="submit" class="btn">Registrarse</button>
+      </form>
     </div>
   </div>
 </body>

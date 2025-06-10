@@ -13,7 +13,7 @@
       <p class="error"><%= @error %></p>
     <% end %>
 
-    <form id="signup-form">
+    <form action="/signup" method="post">
       <div>
         <label for="name">Nombre:</label>
         <input type="text" name="name" id="name" placeholder="Tu nombre completo" required>

@@ -13,7 +13,7 @@
       <p class="error"><%= @error %></p>
     <% end %>
 
-    <form id="login-form">
+    <form action="/login" id="login-form" method="post">
       <label for="email">Email</label>
       <input type="email" name="email" id="email" required>
 
@@ -23,6 +23,5 @@
       <button type="submit">Entrar</button>
     </form>
   </div>
-  <script src="/scripts/login.js" defer></script>
 </body>
 </html>

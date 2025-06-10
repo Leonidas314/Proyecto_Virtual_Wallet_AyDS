@@ -17,15 +17,18 @@ class AuthController < Sinatra::Base
     end
 
     post '/login' do
-        data = JSON.parse(request.body.read)
-        user = User.find_by(email: data["email"])
+        email = params[:email]
+        password = params[:password]
+          
+        user = User.find_by(email: email)
 
-        if user && user.authenticate(data["password"])
+        if user && user.authenticate(password)
             session[:user_id] = user.id
             status 200
 
             content_type :json
             { message: "Login exitoso", user: { id: user.id, name: user.name, email: user.email } }.to_json
+            redirect '/dashboard'
         else
             status 401
             content_type :json
@@ -34,28 +37,25 @@ class AuthController < Sinatra::Base
     end
 
     post '/signup' do
-        data = JSON.parse(request.body.read)
-
         user = User.new(
-            name: data["name"],
-            email: data["email"],
-            phone: data["phone"],
-            cvu: data["cvu"],
-            balance: data["balance"] || 0,
-            password: data["password"],
-            password_confirmation: data["password_confirmation"]
+            name: params[:name],
+            email: params[:email],
+            phone: params[:phone],
+            password: params[:password],
+            password_confirmation: params[:password_confirmation]
         )
 
-        if User.find_by(email: data["email"])
+        if User.find_by(email: params[:email])
             status 409
             return { error: "El email ya está registrado" }.to_json
         end
 
         if user.save
-            Account.create!(user_id: user.id, tipo: data["account_type"], balance: 0)
+            Account.create!(user_id: user.id, tipo: params[:account_type], balance: 0)
             status 201
             content_type :json
             { message: "Usuario creado exitosamente", user: user }.to_json
+            redirect "/login"
         else
             status 422
             content_type :json
@@ -65,6 +65,6 @@ class AuthController < Sinatra::Base
 
     post "/logout" do
         session.clear
-        redirect "/"
+        redirect "/index"
     end
 end
