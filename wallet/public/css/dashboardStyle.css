@@ -84,3 +84,58 @@ article {
   padding-top: 0.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+.right {
+  max-width: 500px;
+  padding: 1rem 2rem;
+}
+
+.right h2 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.dollar-card {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr 1fr;
+  gap: 0.8rem 1.2rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.75rem;
+  transition: background 0.3s ease;
+  cursor: default;
+}
+
+.dollar-card:hover {
+  background: rgba(38, 208, 206, 0.15);
+}
+
+.dollar-card .title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #a1eafb;
+  flex: 1;
+}
+
+.dollar-card .buy,
+.dollar-card .sell {
+  width: 120px;
+  text-align: right;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #cfd8dc;
+}
+
+.dollar-card .buy strong {
+  color: #81c784; /* verde suave */
+}
+
+.dollar-card .sell strong {
+  color: #e57373; /* rojo suave */
+}

@@ -36,14 +36,29 @@
       </section>
 
       <section class="right glass">
-        <h2>Noticias</h2>
-        <% @notices.each do |notice| %>
-          <article>
-            <h3><%= notice.title %></h3>
-            <p><%= notice.body %></p>
-          </article>
+        <h2>Cotizaciones</h2>
+
+        <% icons = {
+          "Oficial" => "🏦",
+          "Blue" => "💙",
+          "Bolsa" => "📈",
+          "Contado con liquidación" => "💵",
+          "Mayorista" => "🤝",
+          "Cripto" => "₿",
+          "Tarjeta" => "💳"
+        } %>
+
+        <% @dollars.each do |dolar| %>
+          <div class="dollar-card">
+            <span class="title"><%= icons[dolar["nombre"]] || "💰" %> <%= dolar["nombre"] %></span>
+            <span class="buy">Compra: <strong>$<%= dolar["compra"] %></strong></span>
+            <span class="sell">Venta: <strong>$<%= dolar["venta"] %></strong></span>
+          </div>
         <% end %>
       </section>
+
+
+
     </div>
 
     <footer>

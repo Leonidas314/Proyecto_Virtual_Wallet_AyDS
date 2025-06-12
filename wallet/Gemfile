@@ -9,3 +9,4 @@ gem "sqlite3"
 gem "rake"
 gem 'bcrypt'
 gem 'dotenv'
+gem 'rqrcode'

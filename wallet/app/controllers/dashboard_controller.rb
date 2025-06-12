@@ -1,4 +1,6 @@
 require 'sinatra/base'
+require 'net/http'
+require 'json'
 
 class DashBoardController < Sinatra::Base
   set :views, File.expand_path('../../views', __FILE__)
@@ -13,9 +15,10 @@ class DashBoardController < Sinatra::Base
       puts "session[:user_id] está presente: #{session[:user_id]}"
 
       @user = User.find_by(id: session[:user_id])
+
       if @user
         puts "Usuario encontrado: #{@user.email}"
-        @notices = Notice.all
+        @dollars = get_dollars
 
         erb :'erb/dashboard'
       else
@@ -28,7 +31,12 @@ class DashBoardController < Sinatra::Base
       puts "session[:user_id] no está presente, redirigiendo a login"
 
       redirect '/login'
-
-      end
     end
+  end
+
+  def get_dollars
+    url = URI("https://dolarapi.com/v1/dolares")
+    response = Net::HTTP.get(url)
+    JSON.parse(response)
+  end
 end
