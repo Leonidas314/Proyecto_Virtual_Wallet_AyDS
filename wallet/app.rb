@@ -4,6 +4,7 @@ require_relative './controllers/auth_controller'
 require_relative './controllers/dashboard_controller'
 require_relative './controllers/index_controller'
 require_relative './controllers/ingresar_dinero_controller'
+require_relative './controllers/load_credit_controller'
 
 
 enable :sessions
@@ -13,3 +14,4 @@ use IndexController
 use AuthController
 use DashBoardController
 use IngresarDineroController
+use CargarDineroController

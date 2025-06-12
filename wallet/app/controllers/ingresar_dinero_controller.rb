@@ -8,11 +8,15 @@ class IngresarDineroController < Sinatra::Base
   set :static, true
 
   get '/ingresarDinero' do
-    user_id = session[:user_id] || 1 # Simulación por ahora
+    erb :'erb/ingresarDinero'
+  end
+
+  post '/ingresarDinero' do
+    user_id = session[:user_id] || 1
 
     amount = params[:amount]
     if amount
-      @qr_text = "http://localhost:4567/api/cargar?user_id=#{user_id}&amount=#{amount}"
+      @qr_text = "http://192.168.100.36:9292/confirmarCarga?user_id=#{user_id}&amount=#{amount}"
     end
 
     erb :'erb/ingresarDinero'
@@ -26,4 +30,12 @@ class IngresarDineroController < Sinatra::Base
 
     qr.as_png(size: 300).to_s
   end
+
+  get '/confirmarCarga' do
+    @user_id = params[:user_id]
+    @amount = params[:amount]
+
+    erb :'erb/confirmarCarga'
+  end
+
 end

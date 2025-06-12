@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmar Ingreso</title>
+  <link rel="stylesheet" href="/css/ingresarDinero.css">
+</head>
+<body>
+  <div class="qr-container">
+    <div class="qr-box glass">
+      <h2>Confirmar Ingreso</h2>
+      <p>¿Querés ingresar <strong>$<%= @amount %></strong> a la cuenta <strong><%= @user_id %></strong>?</p>
+
+      <form method="post" action="/api/cargar">
+        <input type="hidden" name="user_id" value="<%= @user_id %>">
+        <input type="hidden" name="amount" value="<%= @amount %>">
+        <button type="submit" class="btn">Confirmar</button>
+      </form>
+
+      <a href="/dashboard">← Cancelar y volver</a>
+    </div>
+  </div>
+</body>
+</html>
