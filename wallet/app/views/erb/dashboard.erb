@@ -22,7 +22,9 @@
           <p>$<%= @user.balance %> ARS</p>
           <div class="actions">
             <button>Enviar</button>
-            <button>Ingresar</button>
+            <form action="/ingresarDinero" method="get">
+              <button type="submit">Ingresar</button>
+            </form>
             <button>Historial</button>
           </div>
         </section>

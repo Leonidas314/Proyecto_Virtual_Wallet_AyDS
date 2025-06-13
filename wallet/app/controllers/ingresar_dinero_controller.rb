@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'rqrcode'
 require 'chunky_png'
+require 'socket'
 
 class IngresarDineroController < Sinatra::Base
   set :views, File.expand_path('../../views', __FILE__)
@@ -16,7 +17,9 @@ class IngresarDineroController < Sinatra::Base
 
     amount = params[:amount]
     if amount
-      @qr_text = "http://192.168.100.36:9292/confirmarCarga?user_id=#{user_id}&amount=#{amount}"
+      ip = local_ip
+      puts "IP local generada para QR: #{ip}"
+      @qr_text = "http://#{ip}:9292/confirmarCarga?user_id=#{user_id}&amount=#{amount}"
     end
 
     erb :'erb/ingresarDinero'
@@ -36,6 +39,13 @@ class IngresarDineroController < Sinatra::Base
     @amount = params[:amount]
 
     erb :'erb/confirmarCarga'
+  end
+
+  def local_ip
+    UDPSocket.open do |s|
+      s.connect('8.8.8.8', 1)
+      s.addr.last
+    end
   end
 
 end
