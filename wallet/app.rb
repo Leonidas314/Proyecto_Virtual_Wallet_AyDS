@@ -5,7 +5,7 @@ require_relative './controllers/dashboard_controller'
 require_relative './controllers/index_controller'
 require_relative './controllers/ingresar_dinero_controller'
 require_relative './controllers/load_credit_controller'
-
+require_relative './controllers/transfer_controller'
 
 enable :sessions
 set :session_secret, ENV['SESSION_SECRET']
@@ -15,3 +15,4 @@ use AuthController
 use DashBoardController
 use IngresarDineroController
 use CargarDineroController
+use TransferController

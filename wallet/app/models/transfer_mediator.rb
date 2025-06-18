@@ -1,4 +1,4 @@
-class Transfer < ActiveRecord::Base
+class TransferMediator < ActiveRecord::Base
     # La relacionamos con la tabla anterior del mediator por ahora (renombrarla?)
     self.table_name = "transfer_mediators"
 
