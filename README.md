@@ -6,9 +6,11 @@ Actualmente, la aplicación cuenta con los siguientes puntos clave:
 
 - 🔐 Registro de usuarios mediante la ruta `/signup`.
 - 🔑 Inicio de sesión y manejo de sesiones con `/login`.
-- 🏠 Página principal protegida en `/index`.
+- 🏠 Página principal en `/index`.
 - 💾 Persistencia de datos usando SQLite3.
 - 🔒 Autenticación básica mediante sesiones de Sinatra.
+- 💸 Generación de código QR para cargar saldo desde el celular.
+- 📲 Interfaz para confirmar la carga y actualizar el balance del usuario.
 
 El backend está desarrollado utilizando Sinatra y SQLite3, y se maneja la autorización con sesiones.
 
@@ -17,6 +19,7 @@ El backend está desarrollado utilizando Sinatra y SQLite3, y se maneja la autor
 - 💎 Ruby
 - 🌐 Sinatra
 - 🗄 SQLite3
+- 📦 RQRCode + ChunkyPNG para generación de códigos QR
 - 🐳 Docker y Docker Compose para la ejecución del entorno
 
 ## 🚀 Cómo ejecutar el proyecto
@@ -42,6 +45,16 @@ Para probar la aplicación localmente, se recomienda utilizar Docker Compose. Lo
     http://localhost:9292
     ```
 
+## 💸 Cómo funciona la carga de dinero por QR
+
+1. Desde el dashboard, el usuario hace clic en **"Ingresar Dinero"**.
+2. Es redirigido a una vista donde ingresa el monto deseado.
+3. Se genera un código QR con un enlace que apunta a `/confirmarCarga`.
+4. Al escanear el código con el celular, se accede a una página de confirmación de carga.
+5. Al confirmar, el servidor actualiza el balance del usuario en la base de datos.
+
+> ✅ **Importante:** Para que el código QR funcione desde otro dispositivo, la IP debe ser accesible desde la red local. Se recomienda usar `host.docker.internal` en desarrollo o configurar correctamente la IP en el backend.
+
 ## 📡 Endpoints disponibles
 
 - `GET /index` — 🏠 Página principal, requiere sesión activa.
@@ -49,6 +62,9 @@ Para probar la aplicación localmente, se recomienda utilizar Docker Compose. Lo
 - `POST /login` — 🔑 Procesa el inicio de sesión.
 - `GET /signup` — ✍️ Formulario para registrarse.
 - `POST /signup` — 📝 Procesa el registro de un nuevo usuario.
+- `GET /ingresarDinero` — 💸 Vista para cargar dinero (GET solo en pruebas).
+- `POST /ingresarDinero` — 💸 Genera el QR para cargar saldo.
+- `GET /confirmarCarga` — ✅ Confirma y aplica el ingreso de dinero.
 
 ## 👥 Participantes
 
@@ -59,7 +75,6 @@ Para probar la aplicación localmente, se recomienda utilizar Docker Compose. Lo
 
 ## 🔮 Futuras mejoras
 
-- 💰 Gestión de saldos y transferencias.
-- 📜 Historial de movimientos.
-- 📰 Integración con APIs de noticias financieras.
-- 🎨 Mejora en la interfaz de usuario.
+- 💰 Gestión completa de saldos y transferencias entre usuarios.
+- 📜 Historial de movimientos financieros.
+- 🎨 Mejora en la interfaz de usuario con diseño responsivo.
