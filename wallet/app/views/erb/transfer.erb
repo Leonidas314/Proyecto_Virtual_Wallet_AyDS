@@ -10,12 +10,12 @@
     <h2>Transferir Dinero</h2>
     <% if @show_form == false %>
       <% if @error %>
-        <div class="error-message"><%= @error %></div>
+        <div class="error-message" style="margin-bottom: 20px;"><%= @error %></div>
         <form action="/transfer" method="get">
           <button type="submit">Volver</button>
         </form>
       <% elsif @success %>
-        <div class="success-message"><%= @success %></div>
+        <div class="success-message" style="margin-bottom: 20px;"><%= @success %></div>
         <form action="/dashboard" method="get">
           <button type="submit">Volver</button>
         </form>
@@ -28,10 +28,10 @@
         <label for="amount">Monto:</label>
         <input type="number" id="amount" name="amount" placeholder="Ej: 100.00" step="0.01" min="0" required>
 
-        <button type="submit">Transferir</button>
-      </form>
-      <form action="/dashboard" method="get">
-          <button>Cancelar</button>
+        <div class="form-actions">
+          <button type="submit">Transferir</button>
+          <a href="/dashboard" class="btn-cancel">Cancelar</a>
+        </div>
       </form>
     <% end %>
   </div>
