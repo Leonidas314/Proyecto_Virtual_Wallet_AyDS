@@ -9,10 +9,12 @@ class AgendarController < Sinatra::Base
     end
 
     post '/agendar' do
+        user_id = session[:user_id]
+        user = User.find_by(id: user_id)
         name = params[:name]
         cvu = params[:cvu]
       
-        contact = Contact.new(name: name, cvu: cvu)
+        contact = Contact.new(user: user, name: name, cvu: cvu)
       
         if contact.save
           redirect '/dashboard'
