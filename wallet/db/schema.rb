@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_18_193553) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_19_020538) do
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "tipo", default: 0, null: false
@@ -18,6 +18,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_18_193553) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "cvu"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "notices", force: :cascade do |t|
@@ -49,6 +58,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_18_193553) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "contacts", "users"
   add_foreign_key "transfer_mediators", "users", column: "from_user_id"
   add_foreign_key "transfer_mediators", "users", column: "to_user_id"
 end
