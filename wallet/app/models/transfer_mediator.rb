@@ -8,8 +8,13 @@ class TransferMediator < ActiveRecord::Base
     validates :from_user, presence: true
     validates :to_user, presence: true
     validates :amount, numericality: { greater_than: 0 }
-  
+
     def self.transferir(from_user, to_user, amount)
+
+        puts "DEBUG from_user inspect:"
+        puts from_user.inspect
+        puts "DEBUG user finded by cbu:"
+        puts to_user.inspect
       raise ArgumentError, "Usuario de origen inválido" unless from_user.is_a?(User)
       raise ArgumentError, "Usuario de destino inválido" unless to_user.is_a?(User)
       raise ArgumentError, "Los usuarios no pueden ser las mismas" if from_user == to_user
