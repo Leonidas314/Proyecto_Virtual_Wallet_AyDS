@@ -12,13 +12,17 @@
     <% if @show_form == false %>
       <% if @error %>
         <div class="error-message"><%= @error %></div>
+        <div id="img-div-error"></div>
+
         <form action="/transfer" method="get">
-          <button type="submit">Volver</button>
+          <button class="btn-volver" type="submit">Volver</button>
         </form>
       <% elsif @success %>
         <div class="success-message"><%= @success %></div>
+        <div id="img-div-accept"></div>
+
         <form action="/dashboard" method="get">
-          <button type="submit">Volver</button>
+          <button class="btn-volver" type="submit">Volver</button>
         </form>
       <% end %>
     <% else %>

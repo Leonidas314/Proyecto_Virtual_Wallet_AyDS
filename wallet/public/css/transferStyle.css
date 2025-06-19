@@ -22,6 +22,10 @@ body {
 
 /* Contenedor principal */
 .login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -133,4 +137,44 @@ a.btn-cancel:hover {
   .button-row button {
     flex: 1 1 100%;
   }
+}
+
+
+/* Botón Volver */
+.btn-volver {
+  display: inline-block;
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  color: #f0f0f0;
+  transition: background 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-volver:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+#img-div-accept{
+  height: 25vh;
+  width: 35vw;
+  background-image: url('../images/accept_10948231.png');
+  background-size: contain;   
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#img-div-error{
+  height: 25vh;
+  width: 35vw;
+  background-image: url('../images/cross_13883874.png');
+  background-size: contain;   
+  background-position: center;
+  background-repeat: no-repeat;
 }
