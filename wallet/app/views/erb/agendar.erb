@@ -9,19 +9,22 @@
 <body>
   <div class="container">
     <h2>Agregar Contacto</h2>
+    <% if @error %>
+      <div class="error-message" style="color: red; margin-bottom: 15px;">
+        <%= @error %>
+      </div>
+    <% end %>
+
     <form action="/agendar" method="POST">
       <div class="form-group">
-        <label for="name">Nombre del contacto</label>
-        <input type="text" name="name" id="name" placeholder="Ej: Juan Pérez" required>
+        <label for="nombre">Nombre del contacto</label>
+        <input type="text" name="name" id="name" placeholder="Ej: Juan Pérez" required value="<%= params[:name] %>">
       </div>
 
       <div class="form-group">
         <label for="cvu">CVU</label>
-        <input type="text" name="cvu" id="cvu" placeholder="Ej: 0001234567890000000012" required>
+        <input type="text" name="cvu" id="cvu" placeholder="Ej: 0001234567890000000012" required value="<%= params[:cvu] %>">
       </div>
-      <% if @error %>
-        <div class="error-message"><%= @error %></div>
-      <% end %>
 
       <div class="form-actions">
         <button type="submit">Guardar</button>

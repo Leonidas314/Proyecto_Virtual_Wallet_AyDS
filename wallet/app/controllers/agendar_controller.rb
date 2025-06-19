@@ -12,16 +12,34 @@ class AgendarController < Sinatra::Base
         user_id = session[:user_id]
         user = User.find_by(id: user_id)
         name = params[:name]
-        cvu = params[:cvu]
+        cvu  = params[:cvu]
       
-        contact = Contact.new(user: user, name: name, cvu: cvu)
-      
-        if contact.save
-          redirect '/dashboard'
-        else
-            @error = contact.errors.full_messages.join(', ')
-            erb :'erb/agendar'
+        if name.nil? || name.strip.empty?
+          @error = "El nombre no puede estar vacío."
+          return erb :'erb/agendar'
         end
-    end
+      
+        destinatario = User.find_by(cvu: cvu)
+      
+        if destinatario.nil?
+          @error = "El CVU ingresado no pertenece a ningún usuario."
+          return erb :'erb/agendar'
+        end
 
+        contacto = Contact.new(user: user, name: name, cvu: cvu)
+
+        if contacto.save
+            redirect '/dashboard'
+        else
+          @error = contacto.errors.full_messages.join(', ')
+          erb :'erb/agendar'
+        end
+      end
+      
+      get '/contactos' do
+        user_id = session[:user_id]
+        user = User.find_by(id: user_id)
+        @contactos = user.contacts 
+        erb :'erb/contactos'
+      end
 end

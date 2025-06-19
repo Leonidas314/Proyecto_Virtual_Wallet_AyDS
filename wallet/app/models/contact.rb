@@ -1,5 +1,5 @@
 class Contact < ActiveRecord::Base
-  validates :cvu, presence: true, uniqueness: true
-  validates :name, presence: true
+  validates :cvu, presence: true, uniqueness: { message: 'ya está en uso' }
+  validates :name, presence: { message: "no puede estar vacío" }
   belongs_to :user
-end
+end 
