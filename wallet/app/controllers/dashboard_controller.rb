@@ -34,6 +34,22 @@ class DashBoardController < Sinatra::Base
     end
   end
 
+  get '/historial' do
+    if session[:user_id]
+      @user = User.find_by(id: session[:user_id])
+
+      if @user
+        @transfers = TransferMediator.where("from_user_id = ? OR to_user_id = ?", @user.id, @user.id).order(created_at: :desc)
+        erb :'erb/historial'
+      else
+        session.clear
+        redirect '/login'
+      end
+    else
+      redirect '/login'
+    end
+  end
+
   def get_dollars
     url = URI("https://dolarapi.com/v1/dolares")
     response = Net::HTTP.get(url)

@@ -1,0 +1,100 @@
+body {
+  font-family: sans-serif;
+  background: url('/images/ChartBackground.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  margin: 0;
+  padding: 20px;
+}
+
+.top-bar {
+  position: relative;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.top-bar h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.top-bar form {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+button {
+  margin-top: 30px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background: rgba(38, 208, 206, 0.8);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: rgba(38, 208, 206, 1);
+}
+
+.historial {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: auto;
+}
+
+.movimiento {
+  display: grid;
+  grid-template-columns: 40px 100px 0.85fr 140px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px #ccc;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  flex-wrap: wrap;
+}
+
+.flecha {
+  font-size: 4rem;
+  flex: 0 0 60px;
+  display: inline-block;
+  text-align: center;
+}
+
+.ingreso .flecha {
+  color: green;
+}
+
+.egreso .flecha {
+  color: red;
+}
+
+.monto {
+  font-size: 1.5rem;
+  flex: 1 1 100px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.info {
+  font-size: 1.5rem;
+  flex: 1 1 150px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.fecha {
+  font-size: 1.5rem;
+  flex: 1 1 130px;
+  text-align: center;
+  white-space: nowrap;
+}

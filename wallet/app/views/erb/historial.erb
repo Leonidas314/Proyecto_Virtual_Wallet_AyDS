@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Historial de Movimientos</title>
+  <link rel="stylesheet" href="/css/historialStyle.css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="header-content">
+        <form action="/dashboard" method="get">
+            <button type="submit">Volver</button>
+        </form>
+        <h1>Historial de Movimientos</h1>
+    </div>
+  </header>
+
+
+  <ul class="historial">
+    <% @transfers.each do |t| %>
+      <% if t.from_user_id == @user.id %>
+        <li class="movimiento egreso">
+          <span class="flecha">↑</span>
+          <span class="monto">- $<%= sprintf('%.2f', t.amount) %></span>
+          <span class="info"><%= User.find(t.to_user_id).name %></span>
+          <span class="fecha"><%= t.created_at.strftime("%d/%m/%Y %H:%M") %></span>
+        </li>
+      <% else %>
+        <li class="movimiento ingreso">
+          <span class="flecha">↓</span>
+          <span class="monto">+ $<%= sprintf('%.2f', t.amount) %></span>
+          <span class="info"><%= User.find(t.from_user_id).name %></span>
+          <span class="fecha"><%= t.created_at.strftime("%d/%m/%Y %H:%M") %></span>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+</body>
+</html>

@@ -17,7 +17,7 @@ class TransferMediator < ActiveRecord::Base
         puts to_user.inspect
       raise ArgumentError, "Usuario de origen inválido" unless from_user.is_a?(User)
       raise ArgumentError, "Usuario de destino inválido" unless to_user.is_a?(User)
-      raise ArgumentError, "Los usuarios no pueden ser las mismas" if from_user == to_user
+      raise ArgumentError, "Los usuarios no pueden ser los mismas" if from_user == to_user
       raise ArgumentError, "Fondos insuficientes" if from_user.balance <= amount
       
       # transaction para seguridad

@@ -49,7 +49,6 @@ class AuthController < Sinatra::Base
         end
 
         if user.save
-            Account.create!(user_id: user.id, tipo: params[:account_type], balance: 0)
             status 201
             content_type :json
             { message: "Usuario creado exitosamente", user: user }.to_json

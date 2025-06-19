@@ -78,12 +78,14 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  chunky_png
   dotenv
   json
   puma
   rackup
   rake
   rqrcode
+  rqrcode_core
   sinatra
   sinatra-activerecord
   sqlite3
