@@ -7,6 +7,7 @@ require_relative './app/controllers/index_controller'
 require_relative './app/controllers/ingresar_dinero_controller'
 require_relative './app/controllers/load_credit_controller'
 require_relative './app/controllers/transfer_controller'
+require_relative './app/controllers/agendar_controller'
 
 class App < Sinatra::Base
   enable :sessions
@@ -18,4 +19,5 @@ class App < Sinatra::Base
   use IngresarDineroController
   use CargarDineroController
   use TransferController
+  use AgendarController
 end
