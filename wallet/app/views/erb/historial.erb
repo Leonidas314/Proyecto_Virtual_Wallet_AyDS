@@ -16,21 +16,22 @@
     </div>
   </header>
 
-
   <ul class="historial">
     <% @transfers.each do |t| %>
       <% if t.from_user_id == @user.id %>
+        <!-- Egreso -->
         <li class="movimiento egreso">
           <span class="flecha">↑</span>
           <span class="monto">- $<%= sprintf('%.2f', t.amount) %></span>
-          <span class="info"><%= User.find(t.to_user_id).name %></span>
+          <span class="info"><%= User.find_by(id: t.to_user_id)&.name || "Usuario desconocido" %></span>
           <span class="fecha"><%= t.created_at.strftime("%d/%m/%Y %H:%M") %></span>
         </li>
       <% else %>
+        <!-- Ingreso -->
         <li class="movimiento ingreso">
           <span class="flecha">↓</span>
           <span class="monto">+ $<%= sprintf('%.2f', t.amount) %></span>
-          <span class="info"><%= User.find(t.from_user_id).name %></span>
+          <span class="info"><%= t.from_user_id.nil? ? "Ingreso" : (User.find_by(id: t.from_user_id)&.name || "Usuario desconocido") %></span>
           <span class="fecha"><%= t.created_at.strftime("%d/%m/%Y %H:%M") %></span>
         </li>
       <% end %>

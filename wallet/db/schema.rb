@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_19_020538) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_19_224917) do
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "tipo", default: 0, null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_19_020538) do
   end
 
   create_table "transfer_mediators", force: :cascade do |t|
-    t.integer "from_user_id", null: false
+    t.integer "from_user_id"
     t.integer "to_user_id", null: false
     t.decimal "amount", precision: 15, scale: 2, null: false
     t.datetime "created_at", null: false

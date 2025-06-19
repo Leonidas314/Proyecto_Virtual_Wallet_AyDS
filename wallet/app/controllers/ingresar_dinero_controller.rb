@@ -38,6 +38,19 @@ class IngresarDineroController < Sinatra::Base
     @user_id = params[:user_id]
     @amount = params[:amount]
 
+    user = User.find_by(id: @user_id)
+
+    if user && @amount.to_f > 0
+      TransferMediator.create!(
+        from_user_id: nil,
+        to_user_id: user.id,
+        amount: @amount.to_f
+      )
+      @success = "Ingreso de $#{@amount} registrado con éxito."
+    else
+      @error = "Error al registrar el ingreso."
+    end
+
     erb :'erb/confirmarCarga'
   end
 
