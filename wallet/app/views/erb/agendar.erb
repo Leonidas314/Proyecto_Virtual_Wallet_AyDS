@@ -19,6 +19,9 @@
         <label for="cvu">CVU</label>
         <input type="text" name="cvu" id="cvu" placeholder="Ej: 0001234567890000000012" required>
       </div>
+      <% if @error %>
+        <div class="error-message"><%= @error %></div>
+      <% end %>
 
       <div class="form-actions">
         <button type="submit">Guardar</button>

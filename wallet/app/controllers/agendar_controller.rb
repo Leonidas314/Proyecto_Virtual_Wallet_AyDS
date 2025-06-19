@@ -19,8 +19,8 @@ class AgendarController < Sinatra::Base
         if contact.save
           redirect '/dashboard'
         else
-          status 422
-          erb :'erb/agendar', locals: { error: "Hubo un problema al guardar el contacto." }
+            @error = contact.errors.full_messages.join(', ')
+            erb :'erb/agendar'
         end
     end
 
