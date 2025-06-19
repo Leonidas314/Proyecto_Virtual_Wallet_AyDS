@@ -65,43 +65,72 @@ input::placeholder {
   color: #ccc;
 }
 
-.form-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1rem;
+/* Mensajes */
+.error-message,
+.success-message {
+  margin-bottom: 20px;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
 }
 
-button,
-a.btn-cancel {
-  padding: 0.6rem 1.4rem;
+.error-message {
+  background-color: rgba(255, 0, 0, 0.3);
+  color: #ffdddd;
+}
+
+.success-message {
+  background-color: rgba(0, 255, 0, 0.3);
+  color: #ddffdd;
+}
+
+/* Contenedor botones - fila flexible y responsive */
+.button-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.button-row button {
+  flex: 1 1 30%;
+  padding: 0.6rem 1.2rem;
   border: none;
   border-radius: 8px;
   font-weight: bold;
   font-size: 0.95rem;
   cursor: pointer;
-  text-decoration: none;
+  background: rgba(38, 208, 206, 0.8);
+  color: #fff;
   transition: background 0.3s ease;
 }
 
-button {
-  background: rgba(38, 208, 206, 0.8);
-}
-
-button:hover {
+.button-row button:hover {
   background-color: #1bb1af;
 }
 
+/* Link estilo cancel (si lo usaras algún día) */
 a.btn-cancel {
   background: rgba(255, 255, 255, 0.15);
   color: #eee;
+  text-decoration: none;
 }
 
 a.btn-cancel:hover {
   background: rgba(255, 255, 255, 0.25);
 }
 
+/* Grupo de campos en columna */
 .form-group {
   display: flex;
   flex-direction: column;
+}
+
+/* Ajuste responsivo pequeño */
+@media (max-width: 400px) {
+  .button-row button {
+    flex: 1 1 100%;
+  }
 }

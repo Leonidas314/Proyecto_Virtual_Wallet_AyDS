@@ -4,20 +4,6 @@
   <meta charset="UTF-8">
   <title>Mi Wallet</title>
   <link rel="stylesheet" href="/css/transferStyle.css">
-
-  <style>
-    .button-row {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .button-row button {
-      flex: 1;
-    }
-  </style>
 </head>
 <body>
   <div class="login-container">
@@ -25,12 +11,12 @@
 
     <% if @show_form == false %>
       <% if @error %>
-        <div class="error-message" style="margin-bottom: 20px;"><%= @error %></div>
+        <div class="error-message"><%= @error %></div>
         <form action="/transfer" method="get">
           <button type="submit">Volver</button>
         </form>
       <% elsif @success %>
-        <div class="success-message" style="margin-bottom: 20px;"><%= @success %></div>
+        <div class="success-message"><%= @success %></div>
         <form action="/dashboard" method="get">
           <button type="submit">Volver</button>
         </form>

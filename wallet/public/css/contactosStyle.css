@@ -1,0 +1,145 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  height: 100vh;
+  background-image: url('../images/ChartBackground.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: #f0f0f0;
+}
+
+/* Contenedor principal */
+.login-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-width: 420px;
+  width: 100%;
+}
+
+/* Título */
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Lista de contactos */
+.contact-list {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+  padding-right: 8px;
+}
+
+.contact-list ul {
+  list-style: none;
+}
+
+/* Cada ítem de contacto */
+.contact-item {
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.3s ease;
+}
+
+.contact-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Nombre de contacto */
+.contact-item strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 1.05rem;
+  color: #ffffff;
+}
+
+/* CVU */
+.contact-item code {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #eeeeee;
+}
+
+/* Botón dentro del contacto */
+.contact-item button {
+  margin-top: 0.8rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: rgba(38, 208, 206, 0.8);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.contact-item button:hover {
+  background-color: #1bb1af;
+}
+
+/* Botón Volver */
+.btn-volver {
+  display: inline-block;
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  color: #f0f0f0;
+  transition: background 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-volver:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Scrollbar fino */
+.contact-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.contact-list::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .contact-item button,
+  .btn-volver {
+    font-size: 0.9rem;
+  }
+}

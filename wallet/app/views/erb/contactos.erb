@@ -3,15 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Seleccionar Contacto</title>
-  <link rel="stylesheet" href="/css/transferStyle.css">
-  <style>
-    .contact-list {
-      max-height: 400px;
-      overflow-y: auto;
-      padding-right: 10px;
-      margin-bottom: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/contactosStyle.css">
 </head>
 <body>
   <div class="login-container">
@@ -20,7 +12,7 @@
     <div class="contact-list">
       <ul>
         <% @contactos.each do |c| %>
-          <li style="margin-bottom: 20px;">
+          <li class="contact-item">
             <strong><%= c.name %></strong><br>
             CVU: <code><%= c.cvu %></code><br>
             <button type="button" onclick="window.location.href='/transfer?cvu=<%= c.cvu %>'">Usar este contacto</button>
@@ -29,9 +21,7 @@
       </ul>
     </div>
 
-    <a href="/transfer">
-      <button type="button">Volver</button>
-    </a>
+    <button class="btn-volver" type="button" onclick="window.location.href='/transfer'">Volver</button>
   </div>
 </body>
 </html>
