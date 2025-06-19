@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password #Hashea el password y genera password (para establecer la contraseña) y authenticate (para verificar la contraseña).
   has_many :accounts
+  has_many :contacts
   
   before_create :generate_unique_cvu
 
