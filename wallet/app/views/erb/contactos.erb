@@ -16,6 +16,10 @@
             <strong><%= c.name %></strong><br>
             CVU: <code><%= c.cvu %></code><br>
             <button type="button" onclick="window.location.href='/transfer?cvu=<%= c.cvu %>'">Usar este contacto</button>
+            <form action="/contactos/<%= c.id %>" method="POST" style="margin-top: 10px;" onsubmit="return confirm('¿Estás seguro de eliminar este contacto?');">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="btn-eliminar">Eliminar contacto</button>
+            </form>
           </li>
         <% end %>
       </ul>

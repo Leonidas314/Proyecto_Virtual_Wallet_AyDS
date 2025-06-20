@@ -12,6 +12,7 @@ require_relative './app/controllers/agendar_controller'
 class App < Sinatra::Base
   enable :sessions
   set :session_secret, ENV['SESSION_SECRET'] || 'clave_dev_segura'
+  use Rack::MethodOverride
 
   use IndexController
   use AuthController
@@ -20,4 +21,5 @@ class App < Sinatra::Base
   use CargarDineroController
   use TransferController
   use AgendarController
+  use Rack::MethodOverride
 end

@@ -42,4 +42,14 @@ class AgendarController < Sinatra::Base
         @contactos = user.contacts 
         erb :'erb/contactos'
       end
+
+      delete '/contactos/:id' do
+        user_id = session[:user_id]
+        user = User.find_by(id: user_id)
+        contacto = user.contacts.find_by(id: params[:id])
+      
+        contacto.destroy if contacto
+        redirect '/contactos'
+      end
+      
 end
