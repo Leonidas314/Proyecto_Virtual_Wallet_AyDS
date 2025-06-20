@@ -21,5 +21,4 @@ class App < Sinatra::Base
   use CargarDineroController
   use TransferController
   use AgendarController
-  use Rack::MethodOverride
 end
